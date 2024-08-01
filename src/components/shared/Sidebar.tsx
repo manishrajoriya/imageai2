@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { usePathname } from 'next/navigation'
+import { SignedOut, SignIn, SignInButton } from '@clerk/nextjs'
+import { SignedIn, UserButton } from '@clerk/clerk-react'
 
 function SideBar() {
     const pathname = usePathname();
@@ -15,6 +17,7 @@ function SideBar() {
             </Link>
 
             <nav className='sidebar-nav '>
+                <SignedIn>
                 <ul className='sidebar-nav_elements'>
                     {
                         navLinks.map((link)=> {
@@ -25,11 +28,21 @@ function SideBar() {
                                 <Image src={link.icon} alt='icon' width={24} height={24} className={` ${isActive && 'brightness-200'}`}/>
                                 {link.label}
                                 </Link>
+                                
                             </li>
                         )})
                            
                     }
+                    <UserButton/>
                 </ul>
+                </SignedIn>
+
+                <SignedOut>
+                    <div className=''>
+                        Sign in to customize your dashboard
+                        <SignInButton />
+                    </div>
+                </SignedOut>
             </nav>
         </div>
 
