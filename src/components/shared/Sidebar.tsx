@@ -37,9 +37,9 @@ function SideBar() {
                 </ul>
                 </SignedIn>
 
-                <SignedOut>
-                    <div className=''>
-                        Sign in to customize your dashboard
+                <SignedOut> 
+                    <div className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none  focus:ring '>
+                       
                         <SignInButton />
                     </div>
                 </SignedOut>
